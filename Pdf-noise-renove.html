@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced PDF Noise Remover with AI-powered cleaning capabilities. Remove unwanted elements from PDFs instantly with modern interface.">
+    <title>Modern PDF Cleaner | AI-Powered Noise Removal</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+            crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .glass-pane {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 800px) 300px;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .upload-zone {
+            padding: 3rem 2rem;
+            border: 2px dashed #334155;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .settings-panel {
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin: 1rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-switch:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .ad-unit {
+            position: sticky;
+            top: 2rem;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+        }
+
+        .process-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .process-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--text);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-unit {
+                display: none;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AI-Powered PDF Cleaner</h1>
+            <p>Remove noise, artifacts, and unwanted elements from PDF documents</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tool-grid">
+            <div class="glass-pane">
+                <!-- Main Ad Unit -->
+                <div class="ad-unit" style="margin-bottom: 2rem;">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+
+                <div class="upload-zone">
+                    <input type="file" id="pdfUpload" hidden accept=".pdf">
+                    <div class="upload-content" onclick="document.getElementById('pdfUpload').click()">
+                        <svg style="width: 64px; height: 64px; margin-bottom: 1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        <h3>Drop PDF file here or click to upload</h3>
+                        <p class="text-muted">Supports PDF files up to 100MB</p>
+                    </div>
+                </div>
+
+                <div class="settings-panel glass-pane">
+                    <h3 style="margin-bottom: 1.5rem;">Processing Options</h3>
+                    <div class="toggle-switch">
+                        <span>Remove Background Noise</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-switch">
+                        <span>Enhance Text Sharpness</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-switch">
+                        <span>Remove Watermarks</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="process-btn" onclick="startProcessing()">
+                    <span id="btnText">Process Document</span>
+                    <div class="loader" id="loader" style="display: none;"></div>
+                </button>
+            </div>
+
+            <!-- Sidebar Ad Unit -->
+            <div class="ad-unit">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Modern File Upload Handling
+        const uploadZone = document.querySelector('.upload-zone');
+        const fileInput = document.getElementById('pdfUpload');
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.style.borderColor = var(--primary);
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.style.borderColor = '#334155';
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                uploadZone.innerHTML = `
+                    <div class="file-preview">
+                        <svg style="width: 48px; height: 48px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <h4>${file.name}</h4>
+                        <p>${(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                    </div>
+                `;
+            }
+        });
+
+        // Processing Animation
+        function startProcessing() {
+            const btn = document.querySelector('.process-btn');
+            const loader = document.getElementById('loader');
+            const btnText = document.getElementById('btnText');
+            
+            btn.disabled = true;
+            btnText.textContent = 'Processing...';
+            loader.style.display = 'block';
+
+            // Simulate processing
+            setTimeout(() => {
+                btn.disabled = false;
+                btnText.textContent = 'Download Clean PDF';
+                loader.style.display = 'none';
+                btn.onclick = () => alert('Download initiated!');
+            }, 3000);
+        }
+
+        // Initialize AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <!-- SEO Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Modern PDF Cleaner",
+        "applicationCategory": "DocumentApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered PDF cleaning tool with modern interface and advanced noise removal capabilities.",
+        "featureList": "PDF Optimization, Noise Removal, Watermark Removal, Document Enhancement",
+        "screenshot": "https://example.com/preview.jpg"
+    }
+    </script>
+</body>
+</html>
