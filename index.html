@@ -1,0 +1,102 @@
+import React, { useState } from "react";
+
+const pdfTools = [
+  {
+    category: "PDF Editing & Enhancement",
+    tools: [
+      { name: "PDF Noise Remover", icon: "🔊", color: "bg-green-100", short_desc: "Remove background noise from PDFs.", text_size: "text-sm" },
+      { name: "Overlay PDF", icon: "📑", color: "bg-blue-100", short_desc: "Overlay multiple PDFs with ease." },
+      { name: "PDF Inverter", icon: "🔄", color: "bg-green-200", short_desc: "Invert PDF colors for better visibility." },
+      { name: "PDF Story", icon: "📖", color: "bg-green-300", short_desc: "Convert PDFs into interactive stories." },
+      { name: "Quiz PDF", icon: "📝", color: "bg-green-400", short_desc: "Create and manage quizzes in PDFs." },
+      { name: "Protect PDF", icon: "🔒", color: "bg-red-100", short_desc: "Add password protection to your PDFs." },
+      { name: "Unlock PDF", icon: "🔐", color: "bg-red-200", short_desc: "Remove password from secured PDFs." },
+      { name: "Compress PDF", icon: "📉", color: "bg-red-300", short_desc: "Reduce PDF size without losing quality." },
+      { name: "Rotate PDF pages", icon: "🔄", color: "bg-pink-100", short_desc: "Rotate PDF pages easily." },
+      { name: "Crop PDF", icon: "✂️", color: "bg-red-400", short_desc: "Trim unwanted parts of PDFs." },
+      { name: "Add Watermark", icon: "💧", color: "bg-blue-200", short_desc: "Insert watermarks into PDFs." },
+      { name: "Extract Images", icon: "🖼️", color: "bg-yellow-100", short_desc: "Extract all images from PDFs." },
+      { name: "Extract Text", icon: "📜", color: "bg-purple-100", short_desc: "Extract text content from PDFs." },
+      { name: "PDF Metadata Editor", icon: "📝", color: "bg-gray-200", short_desc: "Edit PDF metadata information." },
+      { name: "Split PDF", icon: "✂️", color: "bg-pink-200", short_desc: "Split large PDFs into smaller files." },
+      { name: "Merge PDF", icon: "🔗", color: "bg-orange-200", short_desc: "Combine multiple PDFs into one." }
+    ],
+  },
+];
+
+const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <div className="bg-white text-gray-900 min-h-screen">
+      {/* Header Section */}
+      <nav className="flex justify-between items-center p-5 shadow-md bg-black text-white sticky top-0 z-50">
+        <h1 className="text-xl font-bold">PDF Tools</h1>
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+        <div className={`absolute md:relative top-full left-0 w-full md:w-auto md:flex md:items-center bg-black md:bg-transparent p-5 md:p-0 space-y-4 md:space-y-0 md:space-x-4 transition-transform transform ${menuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} ease-in-out duration-300`}>
+          <a href="#" className="block md:inline px-4 py-2 hover:bg-gray-700 rounded">🏠 Home</a>
+          <a href="#" className="block md:inline px-4 py-2 hover:bg-gray-700 rounded">🛠 Tools</a>
+          <a href="#" className="block md:inline px-4 py-2 hover:bg-gray-700 rounded">💰 Pricing</a>
+          <a href="#" className="block md:inline px-4 py-2 hover:bg-gray-700 rounded">🎯 Services</a>
+          <button className="block md:inline px-4 py-2 bg-blue-500 rounded">Login</button>
+          <button className="block md:inline px-4 py-2 bg-green-500 rounded">Sign Up</button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <header className="text-center py-16 bg-blue-100 px-4">
+        <h2 className="text-3xl font-bold animate-fadeIn">Online PDF Tools - Fast, Secure & Cloud-Based</h2>
+        <p className="mt-4">The easiest way to edit, convert, and manage PDF files</p>
+        <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+          <button className="px-6 py-2 bg-white text-blue-500 font-bold rounded shadow-lg hover:bg-gray-200 transition-transform transform hover:scale-105">
+            🛠 Try PDF Tools Now
+          </button>
+          <button className="px-6 py-2 bg-gray-700 text-white rounded shadow-lg hover:bg-gray-800 transition-transform transform hover:scale-105">
+            📄 View Our Services
+          </button>
+        </div>
+      </header>
+
+      {/* Tools Section */}
+      <section className="p-8">
+        {pdfTools.map((category, index) => (
+          <div key={index} className="mb-8">
+            <h3 className="text-2xl font-semibold mb-4">{category.category}</h3>
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+              {category.tools.map((tool, idx) => (
+                <div key={idx} className={`p-6 rounded-lg shadow-md ${tool.color} hover:shadow-xl transform hover:scale-105 transition`}>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-3xl">{tool.icon}</span>
+                    <div>
+                      <h4 className="text-lg font-semibold">{tool.name}</h4>
+                      <p className="text-sm text-gray-600">{tool.short_desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="p-8 bg-gray-100 text-center">
+        <h3 className="text-2xl font-semibold mb-4">What Our Users Say</h3>
+        <p className="italic">"PDF Tools has made my document management so much easier! Highly recommend." - John D.</p>
+        <p className="italic">"Fantastic features and easy to use. A lifesaver!" - Sarah M.</p>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="text-center py-6 bg-gray-800 text-white">
+        <p className="mt-4">&copy; 2025 PDF Tools. All Rights Reserved.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
